@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 # For better debugging
 
 set -x
@@ -6,6 +6,8 @@ set -x
 USAGE="Usage: control.sh (start|stop)"
 
 OPERATION=$1
+
+CLOUDERA=/home/cloudera
 
 case $OPERATION in
     (start)
@@ -21,10 +23,10 @@ case $OPERATION in
 
 	#PARCELS_DIR=`cd $TEMP_PATH; pwd`
 	#FLINK_HOME=$PARCELS_DIR/FLINK-1.6.0-hadoop_2.6-scala_2.11/lib/flink
-	if [ ! -d "/opt/cloudera/parcels/FLINK" ]; then
- 		ln -sv /opt/cloudera/parcels/FLINK-* /opt/cloudera/parcels/FLINK
+	if [ ! -d "$CLOUDERA/parcels/FLINK" ]; then
+ 		ln -sv $CLOUDERA/parcels/FLINK-* $CLOUDERA/parcels/FLINK
 	fi
-	FLINK_HOME=/opt/cloudera/parcels/FLINK/lib/flink
+	FLINK_HOME=$CLOUDERA/parcels/FLINK/lib/flink
 	
 	#Determine if the configuration file directory exists
 	FLINK_CONF_DIR=$CONF_DIR/flink-conf

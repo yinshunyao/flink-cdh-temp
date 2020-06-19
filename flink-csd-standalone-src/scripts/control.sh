@@ -5,6 +5,8 @@ USAGE="Usage: control.sh ((master|worker) (start|stop))"
 NODE_TYPE=$1
 NODE_HOST=`hostname -f`
 
+CLOUDERA=/home/cloudera
+
 
 #Determine if the directory exists
 TEMP_PATH=$CMF_VAR/../cloudera/parcels
@@ -13,11 +15,11 @@ if [ ! -d "$TEMP_PATH" ];then
 fi
 
 #PARCELS_DIR=`cd $TEMP_PATH; pwd`
-if [ ! -d "/opt/cloudera/parcels/FLINK" ]; then
-       ln -sv /opt/cloudera/parcels/FLINK-* /opt/cloudera/parcels/FLINK
+if [ ! -d "$CLOUDERA/parcels/FLINK" ]; then
+       ln -sv $CLOUDERA/parcels/FLINK-* $CLOUDERA/parcels/FLINK
 fi
 
-FLINK_HOME=/opt/cloudera/parcels/FLINK/lib/flink
+FLINK_HOME=$CLOUDERA/parcels/FLINK/lib/flink
 #FLINK_HOME=$PARCELS_DIR/FLINK-1.8.0-BIN-SCALA_2.11/lib/flink
 #Determine if the configuration file directory exists
 FLINK_CONF_DIR=$CONF_DIR/flink-conf
