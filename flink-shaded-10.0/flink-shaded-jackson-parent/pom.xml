@@ -35,7 +35,7 @@ under the License.
     <version>2.10.1-10.0</version>
 
     <properties>
-        <jackson.version>2.12.1</jackson.version>
+        <jackson.version>2.12.6.1</jackson.version>
     </properties>
 
     <modules>
